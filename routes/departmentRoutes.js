@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 // Validation
 const { check, body, validationResult } = require("express-validator");
 
@@ -39,6 +38,15 @@ router.post(
 router.get("/getDepartment", (req, res) => {
   return sendRespose.executeMethod(
     Controller.departmentController.getDepartment,
+    req.body,
+    req,
+    res
+  );
+});
+
+router.get("/getBlockedDepartment", (req, res) => {
+  return sendRespose.executeMethod(
+    Controller.departmentController.getBlockedDepartment,
     req.body,
     req,
     res
@@ -90,6 +98,35 @@ router.get("/filterDepartment", (req, res) => {
     res
   );
 });
+
+
+router.get("/getSalaryLevel1", (req, res) => {
+  return sendRespose.executeMethod(
+    Controller.departmentController.getSalaryLevel1,
+    req.body,
+    req,
+    res
+  );
+});
+
+router.get("/getSalaryLevel2", (req, res) => {
+  return sendRespose.executeMethod(
+    Controller.departmentController.getSalaryLevel2,
+    req.body,
+    req,
+    res
+  );
+});
+
+router.get("/getSalaryLevel3", (req, res) => {
+  return sendRespose.executeMethod(
+    Controller.departmentController.getSalaryLevel3,
+    req.body,
+    req,
+    res
+  );
+});
+
 
 //FIXME: Chart
 router.get("/getDepartmentDetailsByChart", (req, res) => {

@@ -175,4 +175,19 @@ module.exports = {
       };
     }
   },
+
+  // TODO:CHART
+  getEducationDetailsByChart: async (d, req, res) => {
+    let userBlockedCount = await Service.educationService.getDatasBlocked();
+    let BlockCount = userBlockedCount.count;
+    let userUnBlockedCount = await Service.educationService.getDatasUnblock();
+    let UnblockCount = userUnBlockedCount.count;
+    let blockUnblockTotal = await Service.educationService.getDatasall();
+    let total = blockUnblockTotal.count;
+    return {
+      BlockCount: BlockCount,
+      UnblockCount: UnblockCount,
+      blockUnblockTotal: total,
+    };
+  },
 };

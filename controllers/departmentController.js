@@ -63,6 +63,67 @@ module.exports = {
     }
   },
 
+  getBlockedDepartment: async (data) => {
+    const user = await Service.departmentService.getBlockedDepartment(data);
+    if (user) {
+      return {
+        status: 200,
+        user: user,
+      };
+    } else {
+      return {
+        status: 400,
+        message: "No Record Found",
+      };
+    }
+  },
+
+  getSalaryLevel1: async (data) => {
+    const user = await Service.departmentService.getDepartmentSalary(data);
+    if (user) {
+      return {
+        status: 200,
+        user: user,
+      };
+    } else {
+      return {
+        status: 400,
+        message: "No Record Found",
+      };
+    }
+  },
+
+  getSalaryLevel2: async (data) => {
+    const user = await Service.departmentService.getDepartmentSalary2(data);
+    if (user) {
+      return {
+        status: 200,
+        user: user,
+      };
+    } else {
+      return {
+        status: 400,
+        message: "No Record Found",
+      };
+    }
+  },
+
+  getSalaryLevel3: async (data) => {
+    const user = await Service.departmentService.getDepartmentSalary3(data);
+    if (user) {
+      return {
+        status: 200,
+        user: user,
+      };
+    } else {
+      return {
+        status: 400,
+        message: "No Record Found",
+      };
+    }
+  },
+
+
   updateDepartment: async (data, req, res) => {
     // VALIDATION
     const errors = validationResult(req);

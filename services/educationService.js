@@ -190,3 +190,44 @@ exports.filterUser = (criteria, limit, offset) => {
       });
   });
 };
+
+// CHARTS:
+exports.getDatasBlocked = (data) => {
+  return new Promise((resolve, reject) => {
+    Model.EducationModel.findAndCountAll({
+      where: { isBlocked: 1 },
+    })
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        console.log("getAll err ==>>  ", error);
+      });
+  });
+};
+
+exports.getDatasUnblock = (data) => {
+  return new Promise((resolve, reject) => {
+    Model.EducationModel.findAndCountAll({
+      where: { isBlocked: 0 },
+    })
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        console.log("getAll err ==>>  ", error);
+      });
+  });
+};
+
+exports.getDatasall = (data) => {
+  return new Promise((resolve, reject) => {
+    Model.EducationModel.findAndCountAll({})
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        console.log("getAll err ==>>  ", error);
+      });
+  });
+};

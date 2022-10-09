@@ -48,6 +48,22 @@ exports.getDepartment = (data) => {
   });
 };
 
+exports.getBlockedDepartment = (data) => {
+  return new Promise((resolve, reject) => {
+    Model.DepartmentModel.findAndCountAll({
+      where: {
+        isBlocked: 1,
+      },
+    })
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        console.log("Unable to get ALL the Department");
+      });
+  });
+};
+
 exports.findById = (data) => {
   console.log(data);
 
@@ -241,7 +257,7 @@ exports.getDepartmentSalary3 = (data) => {
     Model.DepartmentModel.findAndCountAll({
       where: {
         salaryType: {
-          [Op.eq]: "Level-2",
+          [Op.eq]: "Level-3",
         },
       },
     })

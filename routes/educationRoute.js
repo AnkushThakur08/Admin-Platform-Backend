@@ -105,4 +105,14 @@ router.get("/filterUser", (req, res) => {
 //   );
 // });
 
+// TODO:CHART
+router.get("/getEducationDetailsByChart", (req, res) => {
+  return sendRespose.executeMethod(
+    Controller.educationController.getEducationDetailsByChart,
+    req.body,
+    req,
+    res
+  );
+});
+
 module.exports = router;
